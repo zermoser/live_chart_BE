@@ -1,5 +1,9 @@
 import express from 'express';
 import populationRoutes from './routes/populationRoutes.js';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file if present
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
