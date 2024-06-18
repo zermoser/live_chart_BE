@@ -36,6 +36,7 @@ build/
 # dotenv environment variable files
 .env
 .env.test
+.env.dev
 
 # IDEs and editors
 .idea/
