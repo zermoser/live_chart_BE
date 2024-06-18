@@ -2,9 +2,9 @@ import { getAllPopulationSevice } from './population.service.js';
 
 export const getAllPopulation = async (req, res, next) => {
   try {
-    const population = await getAllPopulationSevice();
+    const data = await getAllPopulationSevice();
     res.status(200).send({
-      population,
+      population: data,
     });
   } catch (error) {
     next(error);
