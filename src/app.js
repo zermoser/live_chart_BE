@@ -1,21 +1,17 @@
 import express from 'express';
-import populationRoutes from './routes/populationRoutes.js';
-import dotenv from 'dotenv';
-
-// Load environment variables from .env file if present
-dotenv.config();
+import cors from 'cors';
+import config from './config.js';
+import populationRouter from './population/population.routes.js';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const { env, port, domain } = config.app;
 
-// Middleware to parse JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors([domain]));
 
-// Use population routes
-app.use('/api', populationRoutes);
+app.use('/api/', populationRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`[User population service] run on ${env} env and using port ${port}`);
 });
-
-export default app;
